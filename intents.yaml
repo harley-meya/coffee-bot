@@ -1,0 +1,40 @@
+-   flow: create_team
+    intent: meya.keyword
+    settings:
+        ignorecase: true
+        keyword: create
+-   flow: delete_team
+    intent: meya.keyword
+    settings:
+        ignorecase: true
+        keyword: delete
+-   flow: display_orders
+    intent: meya.keyword
+    settings:
+        ignorecase: true
+        keyword: display
+-   flow: first_time
+    intent: meya.keyword
+    settings:
+        ignorecase: true
+        keyword: restart
+-   flow: get_team_status
+    intent: meya.keyword
+    settings:
+        ignorecase: true
+        keyword: status
+-   flow: join_team
+    intent: meya.keyword
+    settings:
+        ignorecase: true
+        keyword: join
+-   flow: leave_team
+    intent: meya.keyword
+    settings:
+        ignorecase: true
+        keyword: leave
+-   flow: set_order
+    intent: meya.keyword
+    settings:
+        ignorecase: true
+        keyword: order

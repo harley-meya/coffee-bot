@@ -1,0 +1,24 @@
+name: delete_team
+states:
+    yes_no_state:
+        component: meya.nlp_yes_no
+        properties:
+            text: Are you sure you want to delete team {{ user.team_name }}?
+        transitions:
+            'yes': yes_state
+            'no': no_state
+            
+    yes_state:
+        component: meya.text
+        properties:
+            text: Okay. Deleting...
+    
+    delete_team:
+        component: delete_team
+        return: true
+        
+    no_state:
+        component: meya.text
+        properties:
+            text: Phew! That was close!
+        return: true

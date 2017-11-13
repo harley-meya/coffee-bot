@@ -1,0 +1,30 @@
+name: create_team
+states:
+    start:
+        component: meya.input_string
+        properties:
+            text: What's your team name?
+            output: team_name
+            scope: user
+    
+    check_team_exists:
+        component: check_team_exists
+        transitions:
+            exists: exists
+            not_exists: not_exists
+    
+    exists:
+        component: meya.text
+        properties:
+            text: Sorry :( That team name already exists.
+        return: true
+        
+    not_exists:
+        component: meya.input_string
+        properties:
+            text: "Enter a password your team will use to join the team:"
+            output: team_password
+            scope: user
+            
+    create_team:
+        component: create_team

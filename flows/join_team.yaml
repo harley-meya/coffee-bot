@@ -1,0 +1,67 @@
+name: join_team
+states:
+    input_state:
+        component: meya.input_string
+        properties:
+            text: What is your team name?
+            output: team_name
+            scope: user
+
+    check_team_exists:
+        component: check_team_exists
+        transitions:
+            exists: exists
+            not_exists: not_exists
+
+    exists:
+        component: meya.text
+        properties:
+            text: I found your team!
+
+    get_password:
+        component: meya.input_string
+        properties:
+            text: What is the team password?
+            output: team_password
+            scope: user
+
+    check_password_matches:
+        component: check_password_matches
+        transitions:
+            match: match
+            not_match: not_match
+
+    match:
+        component: add_user_to_team
+        transitions:
+            next: get_order
+
+    get_order:
+        flow: set_order
+        return: true
+
+    not_match:
+        component: meya.text
+        properties:
+            text: Sorry! That password isn't right :(
+        return: true
+
+    not_exists:
+        component: meya.text
+        properties:
+            text: That team doesn't exist!
+
+    ask_to_create:
+        component: meya.text_buttons
+        properties:
+            text: Would you like to create a team called {{ user.team_name }}?
+            output: command
+            buttons:
+                - text: Yes
+                  action: next
+                - text: No
+                  action: next
+    next:
+        component: meya.text
+        properties:
+            text: You clicked {{ flow.command }}

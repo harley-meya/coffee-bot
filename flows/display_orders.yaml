@@ -1,0 +1,4 @@
+name: display_orders
+states:
+    start:
+        component: get_team_orders

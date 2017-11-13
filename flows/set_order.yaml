@@ -1,0 +1,15 @@
+name: set_order
+states:
+    start:
+        component: meya.input_string
+        properties:
+            text: > 
+                What is your order? Specify size and number of creams, sugars, or 
+                sweeteners.
+            output: order
+            scope: user
+
+    finally:
+        component: meya.text
+        properties:
+            text: Great!

@@ -1,0 +1,41 @@
+name: first_time
+states:
+    first:
+        component: meya.text
+        properties:
+            text: Hi! I'm CoffeeBot!
+            
+    get_name:
+        component: meya.input_string
+        properties:
+            text: What's your name?
+            output: name
+            scope: user
+            
+    second:
+        component: meya.text
+        properties:
+            text: >
+                You can CREATE or JOIN a team, add your coffee ORDER or DISPLAY your team's coffee orders. Type HELP for more options.
+                
+    text_buttons_state:
+        component: meya.text_buttons
+        properties:
+            text: What would you like to do?
+            output: command
+            buttons:
+                - text: Join a team
+                  action: join
+                - text: Create a new team
+                  action: create
+        transitions:
+            join: join_team
+            create: create_team
+
+    join_team:
+        flow: join_team
+        return: true
+
+    create_team:
+        flow: create_team
+        return: true

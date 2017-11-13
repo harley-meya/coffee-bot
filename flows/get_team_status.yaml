@@ -1,0 +1,8 @@
+name: get_team_status
+states:
+    start:
+        component: meya.text
+        properties:
+            text: >
+                Team {{ user.team_name }}
+                Password {{user.team_password }}
