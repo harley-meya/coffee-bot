@@ -3,7 +3,7 @@ states:
     start:
         component: meya.input_string
         properties:
-            text: What's your team name?
+            text: What's your team name?a
             output: team_name
             scope: user
     
